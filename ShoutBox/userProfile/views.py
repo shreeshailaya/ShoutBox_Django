@@ -5,8 +5,8 @@ from wsgiref import validate
 from django.forms import ValidationError
 from rest_framework.authtoken.models import Token
 from django.shortcuts import render
-from userProfile.serializer import LoginSerializer
-from userProfile.serializer import RegisterSerializer, UserProfileSerializer, FriendRequestSerializer
+from userProfile.serializers import LoginSerializer
+from userProfile.serializers import RegisterSerializer, UserProfileSerializer, FriendRequestSerializer
 from django.contrib import auth
 from django.contrib.auth import logout
 from rest_framework import generics, status, views, permissions, viewsets
@@ -69,6 +69,14 @@ def getUserProfile(request):
 
 @api_view(['GET','PUT'])
 @permission_classes([IsAuthenticated])
+def getUserProfileOnId(request,pk):
+    snnipt = Profile.objects.get(id=pk)
+    serializers = UserProfileSerializer(snnipt)
+    return Response(serializers.data)
+
+
+@api_view(['GET','PUT'])
+@permission_classes([IsAuthenticated])
 def friendsList(request):
     qs = User.objects.all()
     serializers = UserProfileSerializer(qs)
@@ -90,7 +98,7 @@ def sendFriendRequest(request):
     from_user = Token.objects.get(key=token).user_id
 
     users_data = request.data
-    user_id = users_data["to_user"]
+    user_id = users_data['to_user']
     #to_user_user = User.objects.get(id=user_id).user
     to_user = user_id
     #print( from_user1, to_user1)

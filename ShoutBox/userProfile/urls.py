@@ -12,6 +12,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginAPIView.as_view(), name='login'),
     path('userprofile/', view.getUserProfile , name='userprofile' ),
+    path('userprofile/<int:pk>/', view.getUserProfileOnId, name='userprofileonid'),
     path('allusers/', SuggestFriends.as_view({'get': 'list'}), name='friends' ),
     path('sendfreq/', view.sendFriendRequest, name = 'friendrequestsend'),
     path('getfreqs/',GetFriendsRequest.as_view({'get': 'list'}), name='getfriendrequest'),

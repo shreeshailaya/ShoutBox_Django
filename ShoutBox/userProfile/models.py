@@ -24,8 +24,7 @@ class Profile(models.Model):
     def __str__(self):
         return str(self.user.username)
     
-    def get_absolute_url(self):
-        return "/users/{}".format(self.slug)
+   
         
 
 def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
@@ -47,6 +46,9 @@ class FriendRequest(models.Model):
 
     def __str__(self):
         return "From {}, to {}".format(self.from_user.username, self.to_user.username)
+
+
+
 '''
 from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin)
