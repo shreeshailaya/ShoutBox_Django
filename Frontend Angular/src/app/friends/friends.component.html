@@ -1,0 +1,36 @@
+<app-timeline></app-timeline>
+
+
+
+
+
+
+<div class="container mt-3">
+  
+<div class="groups row">
+  <ng-container *ngFor="let friend of friends">
+  <div class="card">
+    <img src={{friend.image}} alt="John" style="width:100%">
+    <h3>{{friend.user['first_name']}} {{friend.user['last_name']}}</h3>
+    <p class="title"></p>
+    <b>{{friend.user['email']}} </b>
+    
+
+    <br>
+    <div *ngIf="addFriendButton;"></div>
+    <p> <button class="btn btn-primary" (click)="addFriend(friend['id'])">Add friend</button></p>
+    <ng-template *ngIf="!addFriendButton;" #disableButton>
+      <p> <button class="btn btn-primary" disabled>Add friend</button></p>
+  </ng-template >
+    <p> <button class="btn btn-primary" >Cancel</button></p>
+
+    
+  </div>
+  </ng-container>
+  </div>
+</div>
+
+
+
+
+

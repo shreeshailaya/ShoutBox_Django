@@ -1,0 +1,8 @@
+{
+    "//*": {
+      "target": "http://sms.vitkar.tech",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
+    }
+  }

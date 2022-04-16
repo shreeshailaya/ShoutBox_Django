@@ -1,0 +1,101 @@
+
+<div *ngIf="tokenStatus(); else elseBlock">
+
+ <app-timeline>
+  
+ </app-timeline>
+ <!-- <p>THIS IS THE TIMELINE NOT HEADER</p> -->
+
+ <div class="container">
+   <div class="profile-page tx-13">
+       <div class="row">
+           <div class="col-12 grid-margin">
+ 
+           </div>
+       </div>
+       <div class="row profile-body">
+           <!-- left wrapper start -->
+           <!-- #imageForm="ngForm" (ngSubmit)="OnSubmit(tweet, pic, tags)" -->
+           <!-- <form >  -->
+           <div class="d-none d-md-block col-md-4 col-xl-3left-wrapper pt-3">
+             <div style="background-color: rgb(116, 116, 243);">
+                <label>Whats on your mind ?</label>
+              </div>
+ 
+               <div class="form-floating">
+ 
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                  style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Write something here....</label>
+                <br>
+                <!-- <a href="#" class="btn btn-primary">Post</a>&nbsp; -->
+                <!-- <input #file type="file" accept="image/*" (change)="upload(file.files)">
+
+                  <button #upload class="btn btn-primary" (click)="file.click()">Upload file</button> -->
+                
+                <input type="file" id="myfile" name="myfile"><br><br>
+                <button  class="btn btn-primary">Post</button>
+ 
+              </div>
+            
+           </div>
+         <!-- </form> -->
+           <!-- left wrapper end -->
+           <!-- middle wrapper start -->
+           <div class="col-md-8 col-xl-4 middle-wrapper" *ngFor="let list of lists">
+               <div class="row">
+                   <div class="col-md-12 grid-margin">
+                       <div class="card rounded">
+                           <div class="card-header">
+                               <div class="d-flex align-items-center justify-content-between">
+                                   <div class="d-flex align-items-center">
+                                       <!-- <img class="img-xs rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""> -->
+                                       <div class="ml-2 pt-2">
+                                           <p>Name Surname</p>
+                                           <p class="tx-11 text-muted">1 min ago</p>
+                                       </div>
+                                   </div>
+                                   <div class="dropdown">
+ 
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="card-body">
+                               <p class="mb-3 tx-14">{{list.tweet}}</p>
+                               <img class="img-fluid" src={{list.pic}} alt="">
+                           </div>
+                           <div class="card-footer">
+                               <div class="d-flex post-actions">
+                                   <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
+                                       
+                                       <button 
+                                        (click)="enableDisableRule()" 
+                                       [ngClass]="{'' : toggle, 'red': !toggle}">
+                                       {{status}}
+                                   </button>
+                                   </a>
+                                   <a href="javascript:;" class="d-flex align-items-center text-muted mr-4">
+                                       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-square icon-md">
+                                           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                       </svg> -->
+                                       <button class="d-none d-md-block ml-2">Comment</button>
+                                   </a>
+ 
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+ 
+               </div>
+           </div>
+           </div>
+           <!-- middle wrapper end -->
+           
+   </div>
+   </div>
+</div>
+   <ng-template #elseBlock>
+      <h2>Unauthorized access</h2>    
+  </ng-template>
+ 
+ 
